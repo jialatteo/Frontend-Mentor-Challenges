@@ -22,6 +22,8 @@ body {
 						 "sub features";
 	border-radius: 10px;
 	overflow: hidden;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
 	margin: 50px 50px;
 }
 
