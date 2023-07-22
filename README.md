@@ -1,4 +1,7 @@
 # Frontend Mentor Challenges
 
-Select any of the project folders. (e.g [single-price-grid-component](./single-price-grid-component/))  
-In the respective project's README, click on the link to view the deployed project
+1. Select any of the project folders. (e.g [single-price-grid-component](./single-price-grid-component/))  
+1. In the respective project's README, click on the link to view the project deployed using Github Pages
+
+<br><br>
+All the above challenges can be found at [Frontend Mentor](https://www.frontendmentor.io/challenges)
