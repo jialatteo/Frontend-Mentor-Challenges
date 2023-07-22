@@ -1,5 +1,10 @@
 # Frontend Mentor - Single price grid component
 
-[Deployed project](https://jialatteo.github.io/Frontend-Mentor-Challenges/single-price-grid-component-master/)
 
-![Design preview for the Single price grid component coding challenge](./design/desktop-preview.jpg)
+Desktop | Mobile
+:--------------------------------:|:-------------------------:
+![Desktop design](./design/desktop-design.jpg)  |  ![Mobile design](./design/mobile-design.jpg)
+
+<p style="text-align:center">
+    <a href=href="https://jialatteo.github.io/Frontend-Mentor-Challenges/single-price-grid-component-master/">Click here to view deployed project</a> 
+</p>
