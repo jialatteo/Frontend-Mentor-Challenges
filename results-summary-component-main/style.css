@@ -85,7 +85,7 @@ body {
 .result-container h3 {
 	color: white;
 	font-size: 36px;
-	margin-bottom: -20px;
+	margin-bottom: -16px;
 }
 
 .summary-container {
@@ -159,4 +159,23 @@ body {
 
 .summary-container button:hover {
 	background-color: var(--button-gray-hover);
+}
+
+@media (max-width:640px) {
+	.main-container {
+		border-radius: 0;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(2, 1fr);
+	}
+
+	.result-container {
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		gap: 10px;
+	}
+
+	.result-container h3 {
+		margin-bottom: -8px;
+	}
+
 }
