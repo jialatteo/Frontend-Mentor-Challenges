@@ -5,7 +5,6 @@
 
 :root {
 	/* Stat colours */
-	/* --reaction-red: hsl(0, 82%, 63%); */
 	--reaction-red: hsl(0, 100%, 67%);
 	--reaction-red-bg: hsl(0, 100%, 98%);
 	--memory-yellow: hsl(39, 100%, 56%);
@@ -25,7 +24,8 @@
 	--white: hsl(0, 0%, 100%);
 	--pale-blue: hsl(221, 100%, 96%);
 	--light-lavender: hsl(241, 100%, 89%);
-	--dark-gray-blue: hsl(224, 30%, 27%);
+	--button-gray: hsl(224, 31%, 22%);
+	--button-gray-hover: hsl(223, 30%, 12%);
 }
 
 * {
@@ -45,16 +45,47 @@ body {
 .main-container {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	max-width: 760px;
+	border-radius: 40px;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .container {
-	padding: 30px;
+	padding: 40px;
 }
 
 .result-container {
-	color: var(--white);
-	background-color: var(--violet-blue-circle);	
+	display: grid;
+	place-items: center;
 	text-align: center;
+	gap: 30px;
+	color: var(--light-lavender);
+	background-color: var(--violet-blue-circle);	
+	padding: 40px 60px;
+	border-radius: 40px;
+}
+
+.result {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--light-slate-blue-background);
+	border-radius: 50%;
+	height: 220px;
+	width: 220px;
+}
+
+.result-score {
+	color: white;
+	font-weight: 800;
+	font-size: 80px;
+}
+
+.result-container h3 {
+	color: white;
+	font-size: 36px;
+	margin-bottom: -20px;
 }
 
 .summary-container {
@@ -70,6 +101,7 @@ body {
 	display: flex;
 	padding: 16px;
 	border-radius: 8px;
+	align-items: center;
 }
 
 
@@ -99,7 +131,7 @@ body {
 
 .score {
 	margin-left: auto;
-	color: var(--dark-gray-blue);
+	color: var(--button-gray);
 	color: lightslategrey;	
 	font-weight: 800;
 }
@@ -113,7 +145,7 @@ body {
 }
 
 .summary-container button {
-	background-color: var(--dark-gray-blue);
+	background-color: var(--button-gray);
 	color: white;
 	padding: 14px 0;
 	margin-top: 30px;
@@ -121,4 +153,10 @@ body {
 	font-weight: 700;
 	border-radius: 40px;
 	cursor: pointer;
+	transition: background-color ease-in 0.2s;
+}
+
+
+.summary-container button:hover {
+	background-color: var(--button-gray-hover);
 }
