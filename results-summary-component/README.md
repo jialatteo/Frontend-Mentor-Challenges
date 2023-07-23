@@ -1,4 +1,4 @@
-<h1 align=center>Results Summary Component></h1>
+<h1 align=center>Results Summary Component</h1>
 
 <p align=center>
     <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/results-summary-component/">Click here to view the project </a> 
