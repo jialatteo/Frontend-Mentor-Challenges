@@ -143,7 +143,6 @@ body {
 }
 
 .summary-container button {
-	/* background-color: var(--button-gray); */
 	background: var(--button-gray);
 	color: white;
 	padding: 14px 0;
@@ -151,6 +150,7 @@ body {
 	font-size: 18px;
 	font-weight: 700;
 	border-radius: 40px;
+	border: none;
 	cursor: pointer;
 }
 
