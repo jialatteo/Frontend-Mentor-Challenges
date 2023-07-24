@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+:root {
+	--white: hsl(0, 0%, 100%);
+	--text-grey: hsl(217, 12%, 64%);
+	--selected-circle-grey: hsl(216, 13%, 54%);
+	--circle-grey-bg: hsl(213, 19%, 19%);
+	--dark-blue-bg: hsl(216, 13%, 8%);
+	--ratings-container-bg: #1C232D;
+	--orange: hsl(25, 97%, 53%);
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 100vh;
+	display: grid;
+	background-color: var(--dark-blue-bg);
+	place-items: center;
+	font-family: 'Overpass', sans-serif;
+	font-size: 15px;
+}
+
+.container {
+	display: grid;
+	gap: 20px;
+	color: var(--white);
+	background-color: var(--ratings-container-bg);	
+	border-radius: 10px;
+	max-width: 380px;
+	height: 380px;
+	margin: 20px;
+	padding: 30px;
+}
+
+.rating-container p {
+	line-height: 1.5;
+	color: var(--text-grey);
+}
+
+.rating-container h2 {
+	margin-bottom: -10px;
+}
+
+.circle {
+	display: grid;
+	place-items: center;
+	background-color: var(--circle-grey-bg);
+	border: none;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	color: var(--text-grey);
+}
+
+.circle-btn {
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.circle-btn:hover {
+	background-color: var(--selected-circle-grey);
+	color: white;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
+.selected {
+	transition: none;
+	background-color: var(--orange);
+	color: white;
+}
+
+.ratings {
+	display: flex;
+	justify-content: space-between;
+}
+
+.submit-btn {
+	background-color: var(--orange);
+	font-weight: 700;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	border: none;
+	cursor: pointer;
+	padding: 14px;
+	border-radius: 40px;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+	background-color: white;
+	color: var(--orange);
+}
+
+.thank-you-container {
+	display: none;
+	place-items: center;
+	text-align: center;
+}
+
+.thank-you-container h3 {
+	color: var(--orange);
+	font-weight: 400;
+	font-size: 14px;
+	background-color: var(--circle-grey-bg);
+	padding: 4px 12px;
+	border-radius: 10px;
+}
