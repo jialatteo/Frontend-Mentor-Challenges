@@ -29,14 +29,15 @@ body {
 }
 
 .main-container {
-	display: flex;	
+	display: grid;	
+	grid-template-columns: repeat(2, 1fr);
 	background-color: white;
 	border-radius: 10px;
 }
 
 .image-container {
 	background: url(./images/bg-pattern-desktop.svg);
-	background-position: -570px -320px;
+	background-position: -570px -300px;
 	background-repeat:no-repeat;
 	position: relative;
 }
@@ -53,7 +54,6 @@ body {
 	right: 80px;
 }
 
-
 .box-image {
 	position: absolute;
 	top: 180px;
@@ -63,17 +63,21 @@ body {
 
 
 h1 {
+	font-size: 36px;
 	margin-bottom: 40px;
 }
 
 .questions-container {
-	width: 540px;
+	max-width: 540px;
 	padding: 40px;
 }
 
 .questions-container h2 {
 	font-weight: 400;
-	margin-right: 40px;
+}
+
+.question-and-answer {
+	padding-right: 50px;	
 }
 
 .question {
@@ -81,6 +85,7 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	color: var(--blue-text);
 }
 
 .question:hover {
@@ -97,19 +102,14 @@ h1 {
 	display: none;
 	color: var(--light-gray-text);
 	line-height: 1.5;
+	margin-top: 16px;
 }
 
 hr {
 	border: 0;
 	border-top: 1px solid var(--grey-divider);
-	margin: 10px 0;
+	margin: 16px 0;
 }
-
-.question h2 {
-	color: var(--blue-text);
-	margin: 10px 0;
-}
-
 
 /* DYNAMIC CLASSES */
 .flipped-icon {
