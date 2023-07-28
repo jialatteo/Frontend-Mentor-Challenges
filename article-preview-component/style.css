@@ -134,7 +134,7 @@ button:focus .tooltip {
 	cursor: default;
 	content: "";
 	position: absolute;
-	top: 99%;
+	top: 98%;
 	left: 50%;
 	margin-left: -10px;
 	border: 10px solid transparent;
