@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
+:root {
+	--dark-gray-title: hsl(217, 19%, 35%);
+	--light-gray-text: hsl(214, 17%, 51%);
+	--gray-date: hsl(212, 23%, 69%);
+	--light-blue-bg: hsl(210, 46%, 95%);
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: var(--light-blue-bg);
+	font-family: 'Manrope', sans-serif;
+	font-size: 13px;
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+}
+
+.main-container {
+	display: flex;
+	margin: 0 70px;
+}
+
+.drawer-image {
+	max-width: 280px;
+	object-fit: cover;
+	object-position: left bottom;
+	border-radius: 10px 0px 0px 10px;
+}
+
+.content-container {
+	position: relative;
+	max-width: 440px;
+	background-color: white;
+	padding: 30px 40px;
+	border-radius: 0px 10px 10px 0px;
+}
+
+.content-container h2 {
+	color: var(--dark-gray-title);
+	margin-bottom: 16px;
+}
+
+.content-container > p {
+	color: var(--light-gray-text);
+	line-height: 1.6;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.author-container {
+	display: flex;
+	align-items: center;
+}
+
+.author-image {
+	border-radius: 50%;	
+	width: 40px;
+	margin-right: 14px;
+}
+
+.author-name {
+	font-weight: 700;
+	color: var(--dark-gray-title);
+	margin-bottom: 2px;
+}
+
+.article-date {
+	color: var(--gray-date);
+}
+
+button {
+	position: relative;
+	z-index: 2;
+	margin-left: auto;
+	width: 30px;
+	height: 30px;
+	background-color: var(--light-blue-bg);
+	border: none;
+	border-radius: 50%;
+	margin-right: 10px;
+	cursor: pointer;
+	display: grid;
+	place-content: center;
+}
+
+button:hover, button:focus {
+	background-color: var(--light-gray-text);
+}
+
+button:hover .share-icon path, button:focus .share-icon path {
+	fill: white;
+}
+
+button:focus .tooltip {
+	visibility: visible;
+}
+
+.share-mobile-container {
+	visibility: hidden;
+}
+
+.tooltip {
+	visibility: hidden;
+	height: 50px;
+	width: 240px;
+    position: absolute;
+	left: 50%;
+	bottom: 70%;
+ 	transform: translate(-50%, -70%);
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 2px 30px;
+	border-radius: 10px;
+    background-color: var(--dark-gray-title); 
+	cursor: default;
+}
+
+.tooltip p {
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-size: 13px;
+	color: var(--gray-date);
+}
+
+.tooltip::after {
+	cursor: default;
+	content: "";
+	position: absolute;
+	top: 99%;
+	left: 50%;
+	margin-left: -10px;
+	border: 10px solid transparent;
+  	border-color: var(--dark-gray-title) transparent transparent transparent;
+}
+
+.tooltip p, .facebook-icon, .twitter-icon, .pinterest-icon {
+	cursor: pointer;
+}
+
+.tooltip p:hover {
+	color: white;
+}
+
+.facebook-icon:hover path {
+	fill: blue;
+}
+
+.twitter-icon:hover path {
+	fill: lightblue;
+}
+
+.pinterest-icon:hover path {
+	fill: red;
+}
+
+@media (max-width: 720px) {
+	button:focus .desktop-tooltip {
+		visibility: hidden;
+	}
+
+	.main-container {
+		flex-direction: column;
+		margin: 40px 20px;
+	}	
+
+	.drawer-image {
+		max-width: 100%;
+		border-radius: 10px 10px 0px 0px;
+	}
+
+	.content-container {
+		max-width: none;
+		border-radius: 0px 0px 10px 10px;
+		padding-bottom: 10px;
+	}
+
+	.content-container p {
+		padding-bottom: 6px;
+	}
+
+	.share-mobile-container {
+		height: 70px;
+		border-radius: 0 0 10px 10px;
+		gap: 40px;
+		width: 100%;
+		left: 50%;
+		bottom: 0%;
+ 		transform: translate(-50%, 0%);
+	}	
+
+	.share-mobile-container::after {
+		content: none;
+	}
+
+	svg {
+		transform: scale(1.5);
+	}
+
+	button {
+		height: 40px;
+		width: 40px;
+	}
+
+	.share-mobile-container p {
+		font-size: 18px;
+	}
+	
+
+}
+
+@media (max-width: 460px) {
+	.content-container {
+		padding: 30px 20px 10px 20px;
+		min-width: 270px;
+	}
+
+	.content-container p {
+		padding-bottom: 2px;
+	}
+
+	.share-mobile-container {
+		height: 50px;
+		border-radius: 0 0 10px 10px;
+		padding: 2px 20px;
+		gap: 20px;
+	}	
+
+	.content-container h2 {
+		font-size: 12px;
+	}
+
+	.content-container p {
+		font-size: 8px;
+	}
+
+	.share-mobile-container p {
+		font-size: 12px;
+	}
+
+
+	.author-image {
+		width: 30px;
+	}
+
+	button {
+		width: 24px;
+		height: 24px;
+	}
+
+	svg {
+		transform: scale(1);
+	}
+
+	.share-icon {
+		transform: scale(0.75);
+	}
+
+}
