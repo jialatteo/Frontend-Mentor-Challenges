@@ -3,14 +3,21 @@ let mobileTooltip = document.getElementsByClassName("share-mobile-container")[0]
 let desktopTooltip = document.getElementsByClassName("desktop-tooltip")[0]
 
 window.onresize = () => {
-	if (window.innerWidth > 720) {
-		mobileTooltip.style.visibility = "hidden"
+	if (document.activeElement === button) {
+		console.log("button is active");
+		if (window.innerWidth <= 720) {
+			mobileTooltip.style.visibility = "visible"
+			desktopTooltip.visibility = "hidden"
+		} else {
+			mobileTooltip.style.visibility = "hidden"
+			desktopTooltip.visibility = "visible"
+		}
 	}
 }
 
 button.onfocus = () => {
 	if (window.innerWidth <= 720) {
-		mobileTooltip.style.visibility = (getComputedStyle(mobileTooltip).visibility === "hidden")
+		mobileTooltip.style.visibility = (document.activeElement = button)
 										? "visible"
 										: "hidden"
 	}
@@ -18,12 +25,6 @@ button.onfocus = () => {
 
 button.onblur = () => {
 	if (window.innerWidth <= 720) {
-		mobileTooltip.style.visibility = (getComputedStyle(mobileTooltip).visibility === "hidden")
-										? "visible"
-										: "hidden"
+		mobileTooltip.style.visibility = "hidden"
 	}
-}
-
-desktopTooltip.onclick = () => {
-	button.blur()	
 }
