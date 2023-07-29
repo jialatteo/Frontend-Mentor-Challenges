@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap');l
+
+:root {
+	--blue-button: hsl(223, 87%, 63%);
+	--blue-icon: hsl(223, 100%, 88%);
+	--red-error: hsl(354, 100%, 66%);
+	--grey-text: hsl(0, 0%, 59%);
+	--very-dark-blue: hsl(209, 33%, 12%);
+	--light-grey: rgb(240, 240, 240);
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 20px;
+}
+
+.main-container {
+	padding: 30px 0;
+	max-width: 800px;
+	display: grid;
+	place-items: center;
+}
+
+.ping-logo {
+	max-width: 80px;
+	margin-bottom: 30px;
+}
+
+h2 {
+	font-size: 44px;
+	font-weight: 300;
+	color: var(--grey-text);
+	margin-bottom: 14px;
+}
+
+h2 span {
+	font-weight: 700;
+	color: black;
+}
+
+p {
+	margin-bottom: 40px;
+}
+
+.email-form {
+	display: flex;
+	place-content: center;
+	width: 100%;
+	height: 52px;
+	margin-bottom: 80px;
+	position: relative;
+}
+
+.email-form input {
+	width: 69%;
+	border-radius: 40px;
+	border: 1px solid var(--light-grey);
+	font-size: 20px;
+	padding: 0px 30px;
+}
+
+.email-form input::placeholder {
+	color: var(--grey-text);
+	font-size: 16px;
+}
+
+.email-form input:focus {
+	outline: 1px solid var(--blue-button);
+}
+
+/* .email-form p {
+	position: absolute;
+	left: 0%;
+	transform: translate(0%, -1000%) ;	
+} */
+
+.email-form button {
+	margin-left: 14px;
+	width: 31%;
+	border-radius: 40px;
+	font-size: 16px;
+	color: white;
+	background-color: var(--blue-button);
+	border: none;
+	cursor: pointer;
+}
+
+.email-form button:hover {
+	background-color: var(--blue-icon);
+}
+
+.dashboard {
+	width: 100%;
+	max-width: 600px;
+	margin-bottom: 60px;
+}
+
+.logo-container {
+	display: flex;
+	gap: 14px;
+	margin-bottom: 30px;
+}
+
+.logo-btn {
+	background-color: transparent;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	border: 1px solid var(--light-grey);
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+}
+
+.logo-btn:hover svg {
+	fill: white;
+}
+
+.logo-btn:hover {
+	background-color: var(--blue-button);
+}
+
+svg {
+	fill: var(--blue-button);
+}
+
+.facebook svg{
+	width: 10px;
+}
+
+.twitter svg {
+	width: 16px;
+}
+
+.instagram svg {
+	width: 16px;
+}
+
+.copyright {
+	font-size: 12px;
+	color: var(--grey-text);
+}
+
