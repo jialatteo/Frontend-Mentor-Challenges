@@ -28,3 +28,7 @@ button.onblur = () => {
 		mobileTooltip.style.visibility = "hidden"
 	}
 }
+
+desktopTooltip.onclick = () => {
+	button.blur()
+}
