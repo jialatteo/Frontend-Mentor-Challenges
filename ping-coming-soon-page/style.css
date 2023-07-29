@@ -158,6 +158,10 @@ svg {
 
 @media (max-width: 500px) {
 
+	.main-container {
+		min-width: 330px;
+	}
+
 	h2 {
 		font-size: 30px;
 	}
