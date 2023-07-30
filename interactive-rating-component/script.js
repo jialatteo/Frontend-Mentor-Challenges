@@ -1,13 +1,11 @@
 let ratingButtons = document.getElementsByClassName("circle-btn")
 let selectedButton;
 for (let i = 0; i < ratingButtons.length; i++) {
-	ratingButtons[i].onclick = () => {
+	ratingButtons[i].onfocus = () => {
 		if (selectedButton) {
 			selectedButton.classList.remove("selected")
-			selectedButton.classList.remove("disabled")
 		}
 		ratingButtons[i].classList.add("selected")
-		ratingButtons[i].classList.add("disabled")
 		document.getElementsByClassName("rating")[0].innerHTML = ratingButtons[i].innerHTML
 		selectedButton = ratingButtons[i]
 	}

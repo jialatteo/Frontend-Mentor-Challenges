@@ -67,14 +67,12 @@ body {
 	color: white;
 }
 
-.disabled {
-	pointer-events: none;
-}
-
 .selected {
 	transition: none;
 	background-color: var(--orange);
 	color: white;
+	cursor: default;
+	pointer-events: none;
 }
 
 .ratings {
