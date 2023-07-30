@@ -14,15 +14,16 @@
     </div>
     <div class="form-container">
       <div class="promo"><span>Try it free 7 days&nbsp;</span> then $20/mo. thereafter</div>
-      <div class="form">
-        <input type="text" class="first-name" placeholder="First Name">
-        <input type="text" class="last-name" placeholder="Last Name">
-        <input type="email" class="email" placeholder="Email Address">
-        <input type="password" class="password" placeholder="Password">
-        <input type="submit" class="claim-btn" value="claim your free trial">
+      <form class="form">
+        <input type="text" class="first-name" placeholder="First Name" oninvalid="setCustomValidity('First Name cannot be empty')" oninput="setCustomValidity('')" required>
+        <input type="text" class="last-name" placeholder="Last Name" oninvalid="setCustomValidity('Last Name cannot be empty')" oninput="setCustomValidity('')" required>
+        <input type="email" class="email" placeholder="Email Address" oninvalid="setCustomValidity('Looks like this is not an email')" oninput="setCustomValidity('')" required>
+        <input type="password" class="password" placeholder="Password" oninvalid="setCustomValidity('Password cannot be empty')" oninput="setCustomValidity('')" required>
+        <input type="submit" class="claim-btn" value="claim your free trial" required>
         <p>By clicking the button, you are agreeing to our <a href="">Terms and Services</a></p>
-      </div>
+      </form>
     </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>

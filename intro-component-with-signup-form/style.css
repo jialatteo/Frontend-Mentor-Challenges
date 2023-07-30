@@ -84,12 +84,13 @@ body {
 	border: 1px solid var(--grayish-blue);
 	border-radius: 4px;
 	padding-left: 30px;
+	padding-right: 40px;
 	font-size: 17px;
 	font-weight: 700;
 }
 
 .form input:focus {
-	border: 1px solid var(--grayish-blue);
+	outline: 1px solid var(--purple);
 }
 
 .form input[type="submit"] {
@@ -148,5 +149,12 @@ body {
 	.main-container {
 		grid-template-columns: 1fr;
 		
+	}
+}
+
+@media (max-width: 450px) {
+	.promo {
+		padding: 0 60px;
+		padding-top: 10px;
 	}
 }
