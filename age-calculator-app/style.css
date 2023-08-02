@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+
+:root {
+	--purple: hsl(259, 100%, 65%);
+	--light-red: hsl(0, 100%, 67%);
+	--white: hsl(0, 0%, 100%);
+	--off-white: hsl(0, 0%, 94%);
+	--light-grey: hsl(0, 0%, 86%);
+	--smokey-grey: hsl(0, 1%, 44%);
+	--off-black: hsl(0, 0%, 8%);
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-size: 32px;
+	font-family: 'Poppins', sans-serif;
+	background-color: var(--off-white);
+	display: grid;
+	place-content: center;
+	min-height: 100vh;
+}
+
+.main-container {
+	background-color: white;
+	border-radius: 14px 14px 100px 14px;
+	padding: 40px;
+	margin: 0 20px;
+	max-width: 800px;
+	min-width: 340px;
+}
+
+form {
+	display: flex;
+	margin-right: 25%;
+	margin-bottom: 50px;
+	gap: 24px;
+}
+
+div > p {
+	color: var(--smokey-grey);	
+	font-size: 14px;
+	letter-spacing: 2px; 
+	margin-bottom: 4px;
+}
+
+input {
+	width: 100%;
+	height: 60px;
+	border-radius: 10px;
+	border: 1px solid var(--light-grey);
+	padding-left: 20px;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 50px;
+}
+
+input::placeholder {
+	color: var(--smokey-grey);
+}
+
+hr {
+	border-top: 1px solid var(--light-grey);
+	margin-right: 5%;
+	margin-bottom: 60px;
+}
+
+svg {
+	background-color: transparent;
+}
+
+.submit {
+	position: relative;
+	margin-bottom: 30px;
+}
+
+button {
+	position: absolute;
+	background-color: var(--purple);
+	border-radius: 50%;
+	border: none;
+	padding: 20px;
+	top: -42px;
+	right: 5%;
+}
+
+button:hover {
+	background-color: var(--off-black);
+	cursor: pointer;
+}
+
+.data-container {
+	margin-top: -40px;
+}
+
+.value {
+	color: var(--purple);
+	font-size: 100px;
+}
+
+.data-type {
+	font-size: 100px;
+	font-weight: 800;
+	font-style: italic;
+}
+
+@media (max-width: 670px) {
+	.value, .data-type {
+		font-size: 80px;
+	}	
+
+	button {
+		height: 70px;
+		width: 70px;
+		display: grid;
+		place-content: center;
+		top: -35px;
+		right: 40%;
+	}
+
+	svg {
+		transform: scale(0.66);
+	}
+
+	hr {
+		margin-right: 0%;
+	}
+
+	form {
+		margin-right: 0%;
+	}
+
+	.data-container {
+		margin-top: -30px;
+	}
+}
+
+
+@media (max-width: 560px) {
+	.main-container {
+		padding: 30px 20px;
+	}
+
+	.value, .data-type {
+		font-size: 60px;
+	}	
+
+	.data-container {
+		margin-top: -20px;
+	}
+
+	input {
+		font-size: 22px;	
+		padding-left: 12px;
+	}
+}
+
+@media (max-width: 420px) {
+	.value, .data-type {
+		font-size: 48px;
+	}	
+
+	.data-container {
+		margin-top: -20px;
+	}
+
+	input {
+		font-size: 16px;	
+		padding-left: 4px;
+	}
+}

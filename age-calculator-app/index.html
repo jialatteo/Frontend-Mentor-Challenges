@@ -4,21 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frontend Mentor | Age calculator app</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  Day
-  DD
-
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
+  <div class="main-container">
+    <form id="dateForm">
+      <div class="input-container day">
+        <p>DAY</p>
+        <input type="number" placeholder="DD">
+      </div>
+      <div class="input-container month">
+        <p>MONTH</p>
+        <input type="number" placeholder="MM">
+      </div>
+      <div class="input-container year">
+        <p>YEAR</p>
+        <input type="number" placeholder="YYYY">
+      </div>
+    </form>
+    <div class="submit">
+      <hr>
+      <button type="submit" form="dateForm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44">
+          <g fill="none" stroke="#FFF" stroke-width="2">
+          <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g>
+        </svg>
+      </button>
+    </div>
+    <div class="data-container"><span class="value">--</span><span class="data-type"> years</span></div>
+    <div class="data-container"><span class="value">--</span><span class="data-type"> months</span></div>
+    <div class="data-container"><span class="value">--</span><span class="data-type"> days</span></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
