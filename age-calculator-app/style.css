@@ -59,8 +59,25 @@ input {
 	line-height: 50px;
 }
 
+input::-webkit-inner-spin-button {
+	display: none;
+}
+
 input::placeholder {
 	color: var(--smokey-grey);
+}
+
+input:focus {
+	outline-color: var(--purple);
+}
+
+.error-message {
+	margin-top: 4px;
+	color: var(--light-red);
+	font-weight: 400;
+	letter-spacing: 1px;
+	font-style: italic;
+	font-size: 7px;
 }
 
 hr {
@@ -149,6 +166,10 @@ button:hover {
 		font-size: 60px;
 	}	
 
+	input {
+		height: 50px;
+	}
+
 	.data-container {
 		margin-top: -20px;
 	}
@@ -164,6 +185,27 @@ button:hover {
 		font-size: 48px;
 	}	
 
+	div > p {
+		margin-bottom: -8px;
+	}
+
+	input {
+		height: 40px;
+	}
+
+	button {
+		height: 50px;
+		width: 50px;
+		display: grid;
+		place-content: center;
+		top: -25px;
+		right: 41%;
+	}
+
+	svg {
+		transform: scale(0.5);
+	}
+
 	.data-container {
 		margin-top: -20px;
 	}
@@ -171,5 +213,9 @@ button:hover {
 	input {
 		font-size: 16px;	
 		padding-left: 4px;
+	}
+
+	.error-message {
+		font-size: 6px;
 	}
 }

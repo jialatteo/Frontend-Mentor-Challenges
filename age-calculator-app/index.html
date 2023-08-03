@@ -8,18 +8,21 @@
 </head>
 <body>
   <div class="main-container">
-    <form id="dateForm">
-      <div class="input-container day">
-        <p>DAY</p>
-        <input type="number" placeholder="DD">
+    <form id="dateForm" novalidate>
+      <div class="input-container">
+        <p class="input-type">DAY</p>
+        <input class="day" type="number" min="1" max="31" placeholder="DD" required>
+        <p class="error-message"></p>
       </div>
-      <div class="input-container month">
-        <p>MONTH</p>
-        <input type="number" placeholder="MM">
+      <div class="input-container">
+        <p class="input-type">MONTH</p>
+        <input class="month" type="number" min="1" max="12" placeholder="MM" required>
+        <p class="error-message"></p>
       </div>
-      <div class="input-container year">
-        <p>YEAR</p>
-        <input type="number" placeholder="YYYY">
+      <div class="input-container">
+        <p class="input-type">YEAR</p>
+        <input class="year" type="number" min="0" max="2023" placeholder="YYYY" required>
+        <p class="error-message"></p>
       </div>
     </form>
     <div class="submit">
