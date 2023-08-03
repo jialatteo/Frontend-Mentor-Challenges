@@ -49,9 +49,8 @@ function validateForm(e) {
 		showMonthError()
 		makeRed(month)
 	}
-
-	if (!year.validity.valid) {
-		showYearError()
+	
+	if (!isValidYear()) {
 		makeRed(year)
 	}
 
@@ -105,20 +104,24 @@ function showMonthError() {
 	}
 }
 
-function showYearError () {
+function isValidYear () {
 	let validityState = year.validity
 	let yearInputContainer = year.parentElement
 	let yearErrorMessage = yearInputContainer.getElementsByClassName("error-message")[0]
 	let currentDate = new Date()
-	let currentYear = currentDate.getFullYear()
-
+	let d = new Date(year.value, month.value - 1, day.value)
+	let isValid = true
 	if (validityState.valueMissing) {
 		yearErrorMessage.textContent = "This field is required"
-	} else if (parseInt(year.value) > currentYear) {
+		isValid = false
+	} else if (d > currentDate) {
 		yearErrorMessage.textContent = "Must be in the past"
+		isValid = false
 	} else {
 		yearErrorMessage.textContent = ""
 	}
+
+	return isValid
 }
 
 function removeErrorOnInput(e) {
