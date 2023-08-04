@@ -110,11 +110,14 @@ function checkValidDay() {
 	let d = new Date(year.value, month.value - 1, day.value)
 	let isValid = true
 
-	if (!(d.getFullYear() == parseInt(year.value)
+	if (validityState.rangeOverflow || validityState.rangeUnderflow) {
+		dayErrorMessage.textContent = "Must be a valid day"
+		isValid = false
+	} else if (!(d.getFullYear() == parseInt(year.value)
  		&& d.getMonth() == parseInt(month.value) - 1
 		&& d.getDate() == parseInt(day.value))
 		&& (checkValidMonth() && checkValidYear())) {
-		dayErrorMessage.textContent = "Must be a valid day"
+		dayErrorMessage.textContent = "Must be a valid date"
 		isValid = false
 	} else if (validityState.valueMissing) {
 		dayErrorMessage.textContent = "This field is required"
@@ -180,7 +183,4 @@ function checkValidYear () {
 		applyValidStyle(year)
 	}
 	return isValid
-}
-
-function removeErrorOnInput(e) {
 }
