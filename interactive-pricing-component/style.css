@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap');
+
+/* 
+	- 10K pageviews / $8 per month
+	- 50K pageviews / $12 per month
+	- 100K pageviews / $16 per month
+	- 500k pageviews / $24 per month
+	- 1M pageviews / $36 per month
+	If the visitor switches the toggle to yearly billing, a 25% discount should be applied to all prices. 
+*/
+
+:root {
+	--soft-cyan: hsl(174, 77%, 80%); /* full slider bar */
+	--strong-cyan: hsl(174, 86%, 45%); /* slider backround */
+	--light-grayish-red : hsl(14, 92%, 95%); /* discount background */
+	--light-red: hsl(15, 100%, 70%); /* discount text */
+	--pale-blue: hsl(226, 100%, 87%); /* cta text */
+	--white: hsl(0, 0%, 100%); /* pricing component background */ 
+	--very-pale-blue: hsl(230, 100%, 99%); /* main background */
+	--light-grayish-blue: hsl(224, 65%, 95%); /* empty slider bar */
+	--light-grayish-blue-toggle-text: hsl(223, 50%, 87%); /* toggle background */
+	--grayish-blue: hsl(225, 20%, 60%); /* text */
+	--dark-desaturated-blue: hsl(227, 35%, 25%); /* text & cta background */
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+
+body {
+	font-size: 15px;
+	font-family: 'Manrope', sans-serif;
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	background-color: var(--very-pale-blue);
+	background-image: url(images/bg-pattern.svg);
+	background-repeat: repeat-x;
+	color: var(--grayish-blue);
+}
+
+.main-container {
+	background-color: var(--white);
+	position: relative;
+	border-radius: 10px;
+	display: grid;
+	align-self: center;
+	margin: 200px 30px;
+}
+
+.title-container {
+	place-self: center;
+	display: grid;
+	place-items: center;
+	position: absolute;
+	top: -160px;
+	text-align: center;
+	background-color: transparent;
+}
+
+.slider-container {
+	padding: 40px;
+}
+
+h2 {
+	font-size: 30px;
+	margin-bottom: 8px;
+	color: black;
+}
+
+.circles {
+	position: absolute;
+	top: -30px;
+	z-index: -1;
+}
+
+.data-display {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pageview {
+	font-weight: 800;
+	letter-spacing: 2px;
+	font-size: 12px;
+}
+
+.pageview span::after{
+	content: "K";
+}
+
+.pricing {
+	display: flex;
+	align-items: center;
+}
+
+.pricing span::before {
+	content: "$";
+}
+
+.pricing span::after {
+	content: ".00";
+}
+
+.pricing span {
+	font-weight: 800;	
+	font-size: 32px;
+	color: black;
+}
+
+/* slider */
+
+/* toggle */
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--light-grayish-blue);
+}
+
+.trial-container {
+	display: flex;
+	padding: 20px 40px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tick {
+	margin-right: 10px;
+}
+
+.benefit-list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.benefit {
+	font-size: 10px;
+}
+
+.trial-btn {
+	height: 30px;
+	padding: 0 36px;
+	border-radius: 30px;
+	border: none;
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--pale-blue);
+	background-color: var(--dark-desaturated-blue);
+}
