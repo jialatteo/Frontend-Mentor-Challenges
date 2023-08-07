@@ -15,8 +15,6 @@ function handleSlide(e) {
 	const max = slider.max
 	let percentage = (val - min) / (max - min) * 100
 	slider.style.backgroundSize = `${percentage}%`
-	console.log("pct " + percentage)
-	console.log("val " + val)
 
 	if (val == 0) {
 		pageview.textContent = "0"
