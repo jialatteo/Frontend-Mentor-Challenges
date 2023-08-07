@@ -127,7 +127,7 @@ h2 {
 	position: relative;
 	margin-bottom: 50px;
 	background: linear-gradient(var(--soft-cyan), var(--soft-cyan)), var(--light-grayish-blue);
-	background-size: 60% 100%; /* affects background image only (linear-gradient is the image) */
+	background-size: 50%; /* affects background image only (linear-gradient is the image) */
 	background-repeat: no-repeat;
 	border-radius: 20px;
 }
