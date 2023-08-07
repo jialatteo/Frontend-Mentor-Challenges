@@ -1,17 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap');
 
-/* 
-	- 10K pageviews / $8 per month
-	- 50K pageviews / $12 per month
-	- 100K pageviews / $16 per month
-	- 500k pageviews / $24 per month
-	- 1M pageviews / $36 per month
-	If the visitor switches the toggle to yearly billing, a 25% discount should be applied to all prices. 
-*/
 
 :root {
 	--soft-cyan: hsl(174, 77%, 80%); /* full slider bar */
 	--strong-cyan: hsl(174, 86%, 45%); /* slider backround */
+	--strong-cyan-focus: hsl(174, 84%, 32%); /* slider backround */
 	--light-grayish-red : hsl(14, 92%, 95%); /* discount background */
 	--light-red: hsl(15, 100%, 70%); /* discount text */
 	--pale-blue: hsl(226, 100%, 87%); /* cta text */
@@ -82,25 +75,27 @@ h2 {
 }
 
 .data-display {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-areas: "pageview pricing"
+						 "slider slider";
+	/* justify-content: space-between;
+	align-items: center; */
 	align-items: center;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 }
 
 .pageview {
+	grid-area: pageview;
 	font-weight: 800;
 	letter-spacing: 2px;
 	font-size: 12px;
 }
 
-.pageview span::after{
-	content: "K";
-}
-
 .pricing {
-	display: flex;
+	grid-area: pricing;
+	display: flex;	
 	align-items: center;
+	justify-content: flex-end;
 }
 
 .pricing span::before {
@@ -119,13 +114,14 @@ h2 {
 
 /* slider */
 .slider {
+	grid-area: slider;
 	display: flex;
 	align-items: center;
 	height: 10px;
 	width: 100%;
+	margin-top: 30px;
 	appearance: none; /* Hides the default slider so that custom slider can be made */
 	position: relative;
-	margin-bottom: 50px;
 	background: linear-gradient(var(--soft-cyan), var(--soft-cyan)), var(--light-grayish-blue);
 	background-size: 50%; /* affects background image only (linear-gradient is the image) */
 	background-repeat: no-repeat;
@@ -146,6 +142,15 @@ h2 {
 	background-size: 22px 13px;
 	background-repeat: no-repeat;
 	cursor: pointer;
+	box-shadow: 0px 10px 30px var(--strong-cyan);
+}
+
+.slider::-webkit-slider-thumb:hover {
+	background-color: var(--soft-cyan);
+}
+
+.slider::-webkit-slider-thumb:active {
+	background-color: var(--strong-cyan-focus);
 }
 
 .slider::-moz-range-thumb{
@@ -155,13 +160,22 @@ h2 {
 	width: 36px;
 	border-radius: 50%;
 	border: none;
-	background-color: var(--strong-cyan);
 	background-image: url(images/icon-slider.svg);
+	background-color: var(--strong-cyan);
 	background-position: fit;
 	background-position: center;
 	background-size: 22px 13px;
 	background-repeat: no-repeat;
 	cursor: pointer;
+	box-shadow: 0px 10px 20px var(--soft-cyan);
+}
+
+.slider::-moz-range-thumb:hover {
+	background-color: var(--soft-cyan);
+}
+
+.slider::-moz-range-thumb:active {
+	background-color: var(--strong-cyan-focus);
 }
 
 .slider::-ms-thumb{
@@ -178,6 +192,15 @@ h2 {
 	background-size: 22px 13px;
 	background-repeat: no-repeat;
 	cursor: pointer;
+	box-shadow: 0px 10px 20px var(--soft-cyan);
+}
+
+.slider::-ms-thumb:hover {
+	background-color: var(--soft-cyan);
+}
+
+.slider::-ms-thumb:active {
+	background-color: var(--strong-cyan-focus);
 }
 
 
@@ -231,6 +254,10 @@ input:checked + .toggle-btn::after {
 
 .discount {
 	font-size: 8px;
+}
+
+.discount::after {
+	content: " discount";
 }
 
 .monthly {
@@ -293,4 +320,64 @@ hr {
 
 .trial-btn:hover {
 	color: var(--very-pale-blue);
+}
+
+@media (max-width: 490px) {
+	.main-container {
+		min-width: 300px;
+	}
+
+	.trial-container {
+		flex-direction: column;
+	}
+
+	.benefit {
+		text-align: center;
+	}
+
+	.trial-btn {
+		margin-top: 30px;
+	}
+
+	.discount {
+		padding: 2px 6px;
+	}
+
+	.discount::before {
+		content: "-";
+	}
+
+	.discount::after {
+		content: "";
+	}
+
+	.data-display {
+		grid-template-areas: "pageview"
+							 "slider"
+							 "pricing";
+		place-items: center;
+		margin-bottom: 20px;
+	}	
+
+	.pricing {
+		margin-bottom: 10px;
+	}
+
+	.slider { 
+		margin-top: 40px;
+		margin-bottom: 30px;
+	}
+
+	.slider-container {
+		padding: 34px 20px;
+	}
+
+	.component {
+		margin-top: 20px;
+	}
+
+	.title-container {
+		margin: 0;
+	}
+
 }
