@@ -1,7 +1,7 @@
 <h1 align=center>Age Calculator App</h1>
 
 <p align=center>
-    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/advice-generator-app/">Click here to view the project </a> 
+    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/2-advice-generator-app/">Click here to view the project </a> 
 </p>
 
 Desktop | Mobile 

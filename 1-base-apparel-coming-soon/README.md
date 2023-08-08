@@ -1,7 +1,7 @@
 <h1 align=center>Base Apparel Coming Soon</h1>
 
 <p align=center>
-    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/base-apparel-coming-soon/">Click here to view the project </a> 
+    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/1-base-apparel-coming-soon/">Click here to view the project </a> 
 </p>
 
 Desktop | Mobile 

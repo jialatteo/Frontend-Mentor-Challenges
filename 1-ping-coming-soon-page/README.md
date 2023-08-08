@@ -1,7 +1,7 @@
 <h1 align=center>Ping Coming Soon Page</h1>
 
 <p align=center>
-    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/ping-coming-soon-page/">Click here to view the project </a> 
+    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/1-ping-coming-soon-page/">Click here to view the project </a> 
 </p>
 
 Desktop | Mobile 

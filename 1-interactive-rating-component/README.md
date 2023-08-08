@@ -1,7 +1,7 @@
 <h1 align=center>Interactive Rating Component</h1>
 
 <p align=center>
-    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/interactive-rating-component/">Click here to view the project </a> 
+    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/1-interactive-rating-component/">Click here to view the project </a> 
 </p>
 
 Desktop | Mobile 

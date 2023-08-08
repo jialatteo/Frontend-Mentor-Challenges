@@ -1,7 +1,7 @@
 <h1 align=center>FAQ Accordion Card</h1>
 
 <p align=center>
-    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/faq-accordion-card/">Click here to view the project </a> 
+    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/1-faq-accordion-card/">Click here to view the project </a> 
 </p>
 
 Desktop | Mobile 

@@ -1,7 +1,7 @@
 <h1 align=center>Results Summary Component</h1>
 
 <p align=center>
-    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/results-summary-component/">Click here to view the project </a> 
+    <a target="_blank" href="https://jialatteo.github.io/Frontend-Mentor-Challenges/1-results-summary-component/">Click here to view the project </a> 
 </p>
 
 Desktop | Mobile 
