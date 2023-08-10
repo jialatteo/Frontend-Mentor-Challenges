@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+:root {
+	--display-amount-text: hsl(172, 67%, 45%);
+	--very-dark-cyan-display-bg: hsl(183, 100%, 15%);
+	--cyan-label: hsl(186, 14%, 43%);
+	--grayish-cyan-person: hsl(184, 14%, 56%);
+	--cyan-bg: hsl(185, 41%, 84%);
+	--cyan-input-bg: hsl(189, 41%, 97%);
+	--white: hsl(0, 0%, 100%);
+	--cyan-button-bg: #0D686D;
+	--cyan-button-text: #055C62;
+	--cyan-hover: #9FE8E0;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Space Mono', monospace;
+	font-size: 24px;
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+	background-color: var(--cyan-bg);
+}
+
+.main-container::before {
+	content: url(images/logo.svg);
+	position: absolute;
+	left: calc(50% - 44px);
+	top: -120px;
+}
+
+.main-container {
+	position: relative;
+	display: grid;	
+	grid-template-columns: repeat(2, 1fr);
+	background-color: var(--white);
+	border-radius: 20px;
+	padding: 30px;
+	margin: 130px 20px;
+	max-width: 950px;
+	min-width: 350px;
+}
+
+.input-container {
+	padding: 30px 40px 10px 10px;
+	display: grid;
+	align-content: space-between;
+}
+
+label, .tip p {
+	display: block;
+	font-size: 14px;
+	color: var(--cyan-label);	
+	margin-bottom: 4px;
+}
+
+input:focus {
+	outline: 2px solid var(--display-amount-text);
+}
+
+input[type="number"] {
+	font-family: inherit;
+	height: 50px;
+	width: 100%;
+	border-radius: 4px;
+	background-color: var(--cyan-input-bg);
+	padding-left: 30px;
+	padding-right: 12px;
+	background-repeat: no-repeat;
+	background-position: 12px center;
+	color: var(--very-dark-cyan-display-bg);
+	border: none;
+	text-align: end;
+	font-size: 24px;
+}
+
+input[type="number"]::placeholder {
+	color: var(--grayish-cyan-person);
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+	appearance: none;
+}
+
+.bill input {
+	background-image: url(images/icon-dollar.svg);
+}
+
+.people input {
+	background-image: url(images/icon-person.svg);
+}
+
+.bill input::placeholder, .people input::placeholder {
+	color: var(--grayish-cyan-person);
+}
+
+.radio-button-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+.tip p {
+	margin-bottom: 16px;
+}
+
+ 
+.radio-label {
+	background-color: var(--very-dark-cyan-display-bg);
+	border-radius: 3px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 24px;
+	color: white;
+}
+
+input[type="number"].custom-tip {
+	color: var(--very-dark-cyan-display-bg);
+	padding: 6px 10px;
+	height: 100%;
+}
+
+.custom-tip::placeholder {
+	text-align: center;		
+	color: var(--cyan-button-bg);
+}
+
+.display-container {
+	background-color: var(--very-dark-cyan-display-bg);
+	color: white;
+	display: grid;
+	padding: 40px;
+	border-radius: 10px;
+	gap: 10px;
+}
+
+.display {
+	display: grid;
+	grid-template-areas: "display-type display-amount"
+						 "person       display-amount";
+}
+
+.display-type {
+	grid-area: display-type;
+	font-size: 18px;
+	place-self: end start;
+}
+
+.person {
+	grid-area: person;
+	color: var(--grayish-cyan-person);
+	font-size: 14px;
+	place-self: top start;
+}
+
+.display-amount {
+	grid-area: display-amount;
+	color: var(--display-amount-text);
+	place-self: center end;
+	font-size: 50px;
+}
+
+button {
+	margin-top: 120px;
+	color: var(--cyan-button-text);
+	background-color: var(--cyan-button-bg);
+	border: none;
+	height: 34px;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 4px;
+	height: 50px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: var(--cyan-hover);
+	color: var(--very-dark-cyan-display-bg);
+}
+
+/* @media (max-width: 900px) {
+	.custom-tip::placeholder {
+		font-size: 20px;
+	}
+} */
+
+@media (max-width: 900px) {
+	.main-container {
+		display: flex;
+		flex-direction: column;
+		margin: 130px 0 0;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.main-container::before {
+		top: -90px;
+	}
+
+
+	button {
+		margin-top: 20px;
+	}
+
+	.input-container {
+		padding: 10px;
+		gap: 30px;
+	}
+
+	.display-container {
+		margin-top: 20px;
+		padding: 40px 30px 30px;
+	}
+}
+
+@media (max-width: 450px) {
+	.radio-button-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.display-type {
+		font-size: 14px;
+	}
+
+	.display-amount {
+		font-size: 40px;
+	}
+}
