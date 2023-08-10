@@ -1,7 +1,3 @@
-let bill = 0
-let tip = 0
-let numberOfPeople = 0
-
 let radioButtons = document.querySelectorAll(".radio-label")
 let checkedRadioButton
 radioButtons.forEach(radioButton => {
@@ -11,7 +7,6 @@ radioButtons.forEach(radioButton => {
 		}
 		radioButton.classList.add("radio-label-focus")
 		checkedRadioButton = radioButton
-		console.log(radioButton.innerHTML)
 	})
 });
 
@@ -39,11 +34,12 @@ textInputs.forEach(textInput => {
 let billInput = document.querySelector(".bill input")
 billInput.addEventListener("keydown", validateBillOnKeydown)
 billInput.addEventListener("blur", formatBill)
+billInput.addEventListener("input", calculateTipAndTotal)
 let tipInput = document.querySelector(".custom-tip")
 tipInput.addEventListener("keydown", validateBillOnKeydown)
 tipInput.addEventListener("blur", formatBill)
+tipInput.addEventListener("input", calculateTipAndTotal)
 function validateBillOnKeydown(e) {
-	console.log(e.key)
 	if (e.key == "Enter" 
 		|| e.key == "Backspace"
 		|| e.key == "Delete"
@@ -69,6 +65,7 @@ let peopleInput = document.querySelector(".people input")
 peopleInput.addEventListener("keydown", validatePeopleOnKeydown)
 peopleInput.addEventListener("blur", formatPeople)
 peopleInput.addEventListener("input", handlePeopleInput)
+peopleInput.addEventListener("input", calculateTipAndTotal)
 let peopleError = document.querySelector(".error")
 
 function validatePeopleOnKeydown(e) {
@@ -109,7 +106,7 @@ function formatBill(e) {
 }
 
 function handlePeopleInput(e) {
-	if (isValidPeopleInput()) {
+	if (!isValidPeopleInput()) {
 		showPeopleError()
 	} else {
 		hidePeopleError()
@@ -117,7 +114,7 @@ function handlePeopleInput(e) {
 }
 
 function isValidPeopleInput() {
-	return parseInt(peopleInput.value) == 0
+	return parseInt(peopleInput.value) != 0
 }
 
 function showPeopleError() {
@@ -130,21 +127,39 @@ function hidePeopleError() {
 	peopleError.style.display = "none"
 }
 
-function calculateTip() {
-	if (isValidPeopleInput()
-		&& tip != null) {
-				
+function calculateTipAndTotal() {
+	console.log("fuck")
+	console.log("1 " + peopleInput.value.length != 0)
+	console.log("2 " + isValidPeopleInput())
+	console.log("3 " + tipInput.value.length != 0)
+	console.log("4 " + billInput.value.length != 0)
+	if (peopleInput.value.length != 0
+		&& isValidPeopleInput()
+		&& tipInput.value.length != 0
+		&& billInput.value.length != 0) {	
+			if (tipInput.value.includes("%")) {
+				let tipPercentage = parseInt(tipInput.value.split("%")[0])
+				let tip = parseFloat((billInput.value * tipPercentage / 100))
+				let numberOfPersons = parseInt(peopleInput.value)
+				let tipPerPerson = (tip / numberOfPersons).toFixed(2)
+				let bill = parseFloat(billInput.value)
+				let total = bill + tip
+				let totalPerPerson = (total / numberOfPersons).toFixed(2)
+				console.log("calculating")
+				showTipAndTotal(tipPerPerson, totalPerPerson)
+			} 
+		} else {
+			reset()
 		}
 }
 
-function calculateTotal(){
-
-}
-
-function showTipAndTotal() {
-
+let tipDisplay = document.querySelector(".tip-display .display-amount")
+let totalDisplay = document.querySelector(".total .display-amount")
+function showTipAndTotal(tipPerPerson, totalPerPerson) {
+	tipDisplay.textContent = tipPerPerson
+	totalDisplay.textContent = totalPerPerson
 }
 
 function reset() {
-
+	showTipAndTotal("0.00", "0.00")
 }

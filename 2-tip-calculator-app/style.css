@@ -195,6 +195,10 @@ input[type="text"].custom-tip {
 	font-size: 50px;
 }
 
+.display-amount::before {
+	content: "$";
+}
+
 button {
 	margin-top: 120px;
 	color: var(--cyan-button-text);
