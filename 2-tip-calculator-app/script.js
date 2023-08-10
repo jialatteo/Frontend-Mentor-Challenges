@@ -1,3 +1,7 @@
+let bill = 0
+let tip = 0
+let numberOfPeople = 0
+
 let radioButtons = document.querySelectorAll(".radio-label")
 let checkedRadioButton
 radioButtons.forEach(radioButton => {
@@ -64,7 +68,7 @@ function validateBillOnKeydown(e) {
 let peopleInput = document.querySelector(".people input")
 peopleInput.addEventListener("keydown", validatePeopleOnKeydown)
 peopleInput.addEventListener("blur", formatPeople)
-peopleInput.addEventListener("input", handleErrorStyle)
+peopleInput.addEventListener("input", handlePeopleInput)
 let peopleError = document.querySelector(".error")
 
 function validatePeopleOnKeydown(e) {
@@ -91,6 +95,7 @@ function formatPeople(e) {
 	}
 
 	e.currentTarget.value = parseInt(e.currentTarget.value)
+	return e.currentTarget.value
 }
 
 function formatBill(e) {
@@ -100,15 +105,19 @@ function formatBill(e) {
  	const trimmedValue = e.currentTarget.value.replace(/^0+(?=\d)/, ''); // Trim leading zeroes
   	const formattedValue = parseFloat(trimmedValue).toFixed(2); // Format to 2 decimal places
 	e.currentTarget.value = formattedValue
+	return e.currentTarget.value
 }
 
-function handleErrorStyle(e) {
-	console.log(e.currentTarget.value)
-	if (parseInt(e.currentTarget.value) == 0) {
+function handlePeopleInput(e) {
+	if (isValidPeopleInput()) {
 		showPeopleError()
 	} else {
 		hidePeopleError()
 	}
+}
+
+function isValidPeopleInput() {
+	return parseInt(peopleInput.value) == 0
 }
 
 function showPeopleError() {
@@ -119,4 +128,23 @@ function showPeopleError() {
 function hidePeopleError() {
 	peopleInput.classList.remove("error-border")	
 	peopleError.style.display = "none"
+}
+
+function calculateTip() {
+	if (isValidPeopleInput()
+		&& tip != null) {
+				
+		}
+}
+
+function calculateTotal(){
+
+}
+
+function showTipAndTotal() {
+
+}
+
+function reset() {
+
 }
