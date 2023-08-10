@@ -11,6 +11,7 @@
 	--cyan-button-bg: #0D686D;
 	--cyan-button-text: #055C62;
 	--cyan-hover: #9FE8E0;
+	--error-red: #CE7763;
 }
 
 * {
@@ -58,13 +59,14 @@ label, .tip p {
 	font-size: 14px;
 	color: var(--cyan-label);	
 	margin-bottom: 4px;
+	cursor: pointer;
 }
 
 input:focus {
 	outline: 2px solid var(--display-amount-text);
 }
 
-input[type="number"] {
+.bill-input, .people-input, .custom-tip {
 	font-family: inherit;
 	height: 50px;
 	width: 100%;
@@ -80,12 +82,8 @@ input[type="number"] {
 	font-size: 24px;
 }
 
-input[type="number"]::placeholder {
+input[type="text"]::placeholder {
 	color: var(--grayish-cyan-person);
-}
-
-input[type="number"]::-webkit-inner-spin-button {
-	appearance: none;
 }
 
 .bill input {
@@ -94,6 +92,24 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .people input {
 	background-image: url(images/icon-person.svg);
+}
+
+.people {
+	position: relative;
+}
+
+.error {
+	position: absolute;
+	content: "Can't be Zero";
+	font-size: 16px;
+	color: var(--error-red);
+	top: -2px;
+	right: 10px;
+	display: none;
+}
+
+.error-border {
+	border: 3px solid var(--error-red);
 }
 
 .bill input::placeholder, .people input::placeholder {
@@ -114,7 +130,6 @@ input[type="radio"] {
 	margin-bottom: 16px;
 }
 
- 
 .radio-label {
 	background-color: var(--very-dark-cyan-display-bg);
 	border-radius: 3px;
@@ -124,7 +139,17 @@ input[type="radio"] {
 	color: white;
 }
 
-input[type="number"].custom-tip {
+.radio-label:hover {
+	background-color: var(--cyan-hover);
+	color: var(--very-dark-cyan-display-bg);
+}
+
+.radio-label-focus {
+	background-color: var(--cyan-hover);
+	color: var(--very-dark-cyan-display-bg);
+}
+
+input[type="text"].custom-tip {
 	color: var(--very-dark-cyan-display-bg);
 	padding: 6px 10px;
 	height: 100%;
@@ -188,12 +213,6 @@ button:hover {
 	color: var(--very-dark-cyan-display-bg);
 }
 
-/* @media (max-width: 900px) {
-	.custom-tip::placeholder {
-		font-size: 20px;
-	}
-} */
-
 @media (max-width: 900px) {
 	.main-container {
 		display: flex;
@@ -206,7 +225,6 @@ button:hover {
 	.main-container::before {
 		top: -90px;
 	}
-
 
 	button {
 		margin-top: 20px;
