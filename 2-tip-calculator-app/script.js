@@ -7,6 +7,7 @@ let checkedRadioButton
 let customTipInput = document.querySelector(".custom-tip")
 let peopleInput = document.querySelector(".people input")
 let peopleError = document.querySelector(".error")
+let resetButton = document.querySelector("button")
 
 /******************************** Style Tip Buttons on click *********************************/
 radioLabels.forEach(radioLabel => {
@@ -156,13 +157,14 @@ function getPeople() {
 		return parseInt(peopleInput.value)
 	}
 }
-/******************************************************** Display final tip and total *****************************************/
+/******************************************************** Display/Reset final tip and total *****************************************/
 billInput.addEventListener("input", updateTipAndTotal)
 customTipInput.addEventListener("input", updateTipAndTotal)
 peopleInput.addEventListener("input", updateTipAndTotal)
 radioLabels.forEach(radioLabel => {
 	radioLabel.addEventListener("click", updateTipAndTotal)
 });
+resetButton.addEventListener("click", reset)
 
 function updateTipAndTotal() {
 	let percentageTipValue = getPercentageTip()
@@ -200,4 +202,12 @@ function showTipAndTotal(tipPerPerson, totalPerPerson) {
 
 function resetTipAndTotal() {
 	showTipAndTotal("0.00", "0.00")
+}
+
+function reset() {
+	resetTipAndTotal()
+	resetRadioButtons()
+	textInputs.forEach(textInput => {
+		textInput.value = ""
+	});
 }
