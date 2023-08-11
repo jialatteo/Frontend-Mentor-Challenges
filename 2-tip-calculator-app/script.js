@@ -1,45 +1,51 @@
-let radioButtons = document.querySelectorAll(".radio-label")
+/******************************** Elements *******************************************/
+let textInputs = document.querySelectorAll('input[type="text"]')
+let billInput = document.querySelector(".bill input")
+let radioLabels = document.querySelectorAll(".radio-label")
+let radioInputs = document.querySelectorAll(".radio-label input")
 let checkedRadioButton
-radioButtons.forEach(radioButton => {
-	radioButton.addEventListener("click", () => {
+let customTipInput = document.querySelector(".custom-tip")
+let peopleInput = document.querySelector(".people input")
+let peopleError = document.querySelector(".error")
+
+/******************************** Style Tip Buttons on click *********************************/
+radioLabels.forEach(radioLabel => {
+	radioLabel.addEventListener("click", () => {
+		customTipInput.value = ""
 		if (checkedRadioButton != null) {
 			checkedRadioButton.classList.remove("radio-label-focus")
 		}
-		radioButton.classList.add("radio-label-focus")
-		checkedRadioButton = radioButton
+		radioLabel.classList.add("radio-label-focus")
+		checkedRadioButton = radioLabel
 	})
 });
 
 
-let customTip = document.querySelector(".custom-tip")
-customTip.addEventListener("click", resetRadioButtons)
+customTipInput.addEventListener("click", resetRadioButtons)
 function resetRadioButtons() {
 	if (checkedRadioButton != null) {
 		checkedRadioButton.classList.remove("radio-label-focus")
 	}
 
-	radioButtons.forEach(radioButton => {
+	radioLabels.forEach(radioButton => {
 		radioButton.classList.remove("radio-label-focus")
-		radioButton.checked = false
+		radioButton.querySelector("input").checked = false
 	})
 }
 
 
-let textInputs = document.querySelectorAll('input[type="text"]')
+/********************************* Text Inputs on paste **************************************/
 textInputs.forEach(textInput => {
-	textInput.addEventListener("paste", validateBillOnKeydown)
+	textInput.addEventListener("paste", validateMoneyOnKeydown)
 })
 
 
-let billInput = document.querySelector(".bill input")
-billInput.addEventListener("keydown", validateBillOnKeydown)
-billInput.addEventListener("blur", formatBill)
-billInput.addEventListener("input", calculateTipAndTotal)
-let tipInput = document.querySelector(".custom-tip")
-tipInput.addEventListener("keydown", validateBillOnKeydown)
-tipInput.addEventListener("blur", formatBill)
-tipInput.addEventListener("input", calculateTipAndTotal)
-function validateBillOnKeydown(e) {
+/********************************* Validate on keydown ********************************/
+billInput.addEventListener("keydown", validateMoneyOnKeydown)
+customTipInput.addEventListener("keydown", validateMoneyOnKeydown)
+peopleInput.addEventListener("keydown", validatePeopleOnKeydown)
+
+function validateMoneyOnKeydown(e) {
 	if (e.key == "Enter" 
 		|| e.key == "Backspace"
 		|| e.key == "Delete"
@@ -59,15 +65,6 @@ function validateBillOnKeydown(e) {
 	}
 }
 
-
-
-let peopleInput = document.querySelector(".people input")
-peopleInput.addEventListener("keydown", validatePeopleOnKeydown)
-peopleInput.addEventListener("blur", formatPeople)
-peopleInput.addEventListener("input", handlePeopleInput)
-peopleInput.addEventListener("input", calculateTipAndTotal)
-let peopleError = document.querySelector(".error")
-
 function validatePeopleOnKeydown(e) {
 	if (e.key == "Enter" 
 		|| e.key == "Backspace"
@@ -86,35 +83,39 @@ function validatePeopleOnKeydown(e) {
 	}
 }
 
-function formatPeople(e) {
-	if (!e.currentTarget.value) {
+
+/********************************* Format strings ********************************/
+billInput.addEventListener("blur", (e) => {e.currentTarget.value = formatMoney(e.currentTarget.value)})
+customTipInput.addEventListener("blur", (e) => {e.currentTarget.value = formatMoney(e.currentTarget.value)})
+peopleInput.addEventListener("blur", (e) => {e.currentTarget.value = formatPeople(e.currentTarget.value)})
+
+function formatPeople(peopleValue) {
+	if (!peopleValue) {
 		return
 	}
-
-	e.currentTarget.value = parseInt(e.currentTarget.value)
-	return e.currentTarget.value
+	return parseInt(peopleValue)
 }
 
-function formatBill(e) {
-	if (!e.currentTarget.value) {
+function formatMoney(moneyValue) {
+	console.log(moneyValue)
+	if (!moneyValue) {
 		return
 	}
- 	const trimmedValue = e.currentTarget.value.replace(/^0+(?=\d)/, ''); // Trim leading zeroes
-  	const formattedValue = parseFloat(trimmedValue).toFixed(2); // Format to 2 decimal places
-	e.currentTarget.value = formattedValue
-	return e.currentTarget.value
+ 	const trimmedValue = moneyValue.replace(/^0+(?=\d)/, ''); // Trim leading zeroes
+  	const formattedValueString = parseFloat(trimmedValue).toFixed(2); // Format to 2 decimal places
+	const formattedValue = parseFloat(formattedValueString)
+	return formattedValue
 }
 
-function handlePeopleInput(e) {
-	if (!isValidPeopleInput()) {
-		showPeopleError()
-	} else {
+/********************************* Error handling ********************************/
+peopleInput.addEventListener("input", handlePeopleError)
+
+function handlePeopleError(e) {
+	if (peopleInput.value.length != 0 && peopleInput.value != 0) {
 		hidePeopleError()
+	} else {
+		showPeopleError()
 	}
-}
-
-function isValidPeopleInput() {
-	return parseInt(peopleInput.value) != 0
 }
 
 function showPeopleError() {
@@ -127,30 +128,77 @@ function hidePeopleError() {
 	peopleError.style.display = "none"
 }
 
-function calculateTipAndTotal() {
-	console.log("fuck")
-	console.log("1 " + peopleInput.value.length != 0)
-	console.log("2 " + isValidPeopleInput())
-	console.log("3 " + tipInput.value.length != 0)
-	console.log("4 " + billInput.value.length != 0)
-	if (peopleInput.value.length != 0
-		&& isValidPeopleInput()
-		&& tipInput.value.length != 0
-		&& billInput.value.length != 0) {	
-			if (tipInput.value.includes("%")) {
-				let tipPercentage = parseInt(tipInput.value.split("%")[0])
-				let tip = parseFloat((billInput.value * tipPercentage / 100))
-				let numberOfPersons = parseInt(peopleInput.value)
-				let tipPerPerson = (tip / numberOfPersons).toFixed(2)
-				let bill = parseFloat(billInput.value)
-				let total = bill + tip
-				let totalPerPerson = (total / numberOfPersons).toFixed(2)
-				console.log("calculating")
-				showTipAndTotal(tipPerPerson, totalPerPerson)
-			} 
-		} else {
-			reset()
+
+
+/*********************************************** Get input values *****************************************************/
+
+function getBill(){
+	if (billInput.value.length != 0) {
+		return formatMoney(billInput)
+	}
+}
+
+function getPercentageTip() {
+	let tipPercentage
+	radioLabels.forEach(radioLabel => {
+		let radioInput = radioLabel.querySelector("input")
+		if (radioInput.checked) {
+			tipPercentage = parseInt(radioLabel.textContent)
 		}
+	})
+	return tipPercentage
+}
+
+function getCustomTip() {
+	if (customTipInput.value.length != 0)	{
+		return formatMoney(customTipInput)
+	}
+}
+
+function getPeople() {
+	if (peopleInput.value.length != 0 && peopleInput.value != 0) {
+		return formatPeople(peopleInput)
+	}
+}
+/******************************************************** Display final tip and total *****************************************/
+billInput.addEventListener("input", updateTipAndTotal)
+customTipInput.addEventListener("input", updateTipAndTotal)
+peopleInput.addEventListener("input", updateTipAndTotal)
+radioLabels.forEach(radioLabel => {
+	radioLabel.addEventListener("click", updateTipAndTotal)
+});
+
+function updateTipAndTotal() {
+	let percentageTipValue = getPercentageTip()
+	let customTipValue = getCustomTip()
+	let billValue = getBill()
+	let peopleValue = getPeople()
+	console.log("percentage tip value: " + percentageTipValue)
+	console.log("custom tip value: " + customTipValue)
+	console.log("bill value: " + billValue)
+	console.log("people value: " + peopleValue)
+	if (billValue
+		&& (percentageTipValue || customTipValue)
+		&& 	peopleValue) {
+			let tip = 0
+			if (percentageTipValue) {
+				tip = parseFloat((billValue * percentageTipValue / 100))
+			}
+			if (customTipValue) {
+				tip = customTipValue
+			}
+
+			
+			let totalPerPerson = formatMoney(billValue + tip / peopleValue)
+			let tipPerPerson = formatMoney(tip / peopleValue)
+			console.log("total : " + (billValue + tip))
+			console.log("tip : " + (tip))
+			console.log("total per person: " + totalPerPerson)
+			console.log("tip per person: " + tipPerPerson)
+			showTipAndTotal(tipPerPerson, totalPerPerson)
+	} else {
+		resetTipAndTotal()
+	}
 }
 
 let tipDisplay = document.querySelector(".tip-display .display-amount")
@@ -160,6 +208,6 @@ function showTipAndTotal(tipPerPerson, totalPerPerson) {
 	totalDisplay.textContent = totalPerPerson
 }
 
-function reset() {
+function resetTipAndTotal() {
 	showTipAndTotal("0.00", "0.00")
 }

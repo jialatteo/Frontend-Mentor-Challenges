@@ -139,6 +139,10 @@ input[type="radio"] {
 	color: white;
 }
 
+.radio-label::after {
+	content: "%";
+}
+
 .radio-label:hover {
 	background-color: var(--cyan-hover);
 	color: var(--very-dark-cyan-display-bg);
