@@ -44,8 +44,8 @@ body {
 	border-radius: 20px;
 	padding: 30px;
 	margin: 130px 20px;
-	max-width: 950px;
-	min-width: 350px;
+	max-width: 1100px;
+	min-width: 360px;
 }
 
 .input-container {
@@ -203,6 +203,10 @@ input[type="text"].custom-tip {
 	content: "$";
 }
 
+.tip-display {
+	margin-bottom: 30px;
+}
+
 button {
 	margin-top: 120px;
 	color: var(--cyan-button-text);
@@ -221,7 +225,7 @@ button:hover {
 	color: var(--very-dark-cyan-display-bg);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
 	.main-container {
 		display: flex;
 		flex-direction: column;
@@ -247,9 +251,13 @@ button:hover {
 		margin-top: 20px;
 		padding: 40px 30px 30px;
 	}
+
+	.tip-display {
+		margin-bottom: 0px;
+	}
 }
 
-@media (max-width: 450px) {
+@media (max-width: 540px) {
 	.radio-button-container {
 		grid-template-columns: repeat(2, 1fr);
 	}
@@ -260,5 +268,29 @@ button:hover {
 
 	.display-amount {
 		font-size: 40px;
+	}
+}
+
+@media (max-width: 450px) {
+	.display-type {
+		font-size: 14px;
+	}
+	.person {
+		font-size: 12px;
+	}
+	.display-amount {
+		font-size: 30px;
+	}
+}
+
+@media (max-width: 390px) {
+	.display-type {
+		font-size: 12px;
+	}
+	.person {
+		font-size: 10px;
+	}
+	.display-amount {
+		font-size: 26px;
 	}
 }

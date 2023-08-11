@@ -23,6 +23,7 @@ radioLabels.forEach(radioLabel => {
 
 
 customTipInput.addEventListener("click", resetRadioButtons)
+customTipInput.addEventListener("click", resetTipAndTotal)
 function resetRadioButtons() {
 	if (checkedRadioButton != null) {
 		checkedRadioButton.classList.remove("radio-label-focus")
@@ -57,6 +58,9 @@ function validateMoneyOnKeydown(e) {
 	}
 
 	const currentValue = e.currentTarget.value
+	if (parseFloat(currentValue) >= 100000) {
+		e.preventDefault()
+	}
 	const selectionStart = e.currentTarget.selectionStart
 	const newValue = currentValue.slice(0, selectionStart) + e.key + currentValue.slice(selectionStart)
   	const regex = /^\d+(\.\d{0,2})?$/;
