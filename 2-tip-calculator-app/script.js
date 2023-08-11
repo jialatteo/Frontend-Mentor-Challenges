@@ -85,36 +85,34 @@ function validatePeopleOnKeydown(e) {
 
 
 /********************************* Format strings ********************************/
-billInput.addEventListener("blur", (e) => {e.currentTarget.value = formatMoney(e.currentTarget.value)})
-customTipInput.addEventListener("blur", (e) => {e.currentTarget.value = formatMoney(e.currentTarget.value)})
-peopleInput.addEventListener("blur", (e) => {e.currentTarget.value = formatPeople(e.currentTarget.value)})
+billInput.addEventListener("blur", (e) => {e.currentTarget.value = formatMoneyString(e.currentTarget.value)})
+customTipInput.addEventListener("blur", (e) => {e.currentTarget.value = formatMoneyString(e.currentTarget.value)})
+peopleInput.addEventListener("blur", (e) => {e.currentTarget.value = formatPeopleString(e.currentTarget.value)})
 
-function formatPeople(peopleValue) {
-	if (!peopleValue) {
-		return
+function formatPeopleString(peopleValue) {
+	if (peopleValue.length == 0) {
+		return ""
 	}
 	return parseInt(peopleValue)
 }
 
-function formatMoney(moneyValue) {
-	console.log(moneyValue)
-	if (!moneyValue) {
-		return
+function formatMoneyString(moneyValue) {
+	if (moneyValue.length == 0) {
+		return ""
 	}
  	const trimmedValue = moneyValue.replace(/^0+(?=\d)/, ''); // Trim leading zeroes
   	const formattedValueString = parseFloat(trimmedValue).toFixed(2); // Format to 2 decimal places
-	const formattedValue = parseFloat(formattedValueString)
-	return formattedValue
+	return formattedValueString
 }
 
 /********************************* Error handling ********************************/
 peopleInput.addEventListener("input", handlePeopleError)
 
 function handlePeopleError(e) {
-	if (peopleInput.value.length != 0 && peopleInput.value != 0) {
-		hidePeopleError()
-	} else {
+	if (peopleInput.value.length != 0 && peopleInput.value == 0) {
 		showPeopleError()
+	} else {
+		hidePeopleError()
 	}
 }
 
@@ -128,13 +126,11 @@ function hidePeopleError() {
 	peopleError.style.display = "none"
 }
 
-
-
 /*********************************************** Get input values *****************************************************/
 
 function getBill(){
 	if (billInput.value.length != 0) {
-		return formatMoney(billInput)
+		return parseFloat(billInput.value)
 	}
 }
 
@@ -151,13 +147,13 @@ function getPercentageTip() {
 
 function getCustomTip() {
 	if (customTipInput.value.length != 0)	{
-		return formatMoney(customTipInput)
+		return parseFloat(customTipInput.value)
 	}
 }
 
 function getPeople() {
 	if (peopleInput.value.length != 0 && peopleInput.value != 0) {
-		return formatPeople(peopleInput)
+		return parseInt(peopleInput.value)
 	}
 }
 /******************************************************** Display final tip and total *****************************************/
@@ -173,10 +169,7 @@ function updateTipAndTotal() {
 	let customTipValue = getCustomTip()
 	let billValue = getBill()
 	let peopleValue = getPeople()
-	console.log("percentage tip value: " + percentageTipValue)
-	console.log("custom tip value: " + customTipValue)
-	console.log("bill value: " + billValue)
-	console.log("people value: " + peopleValue)
+
 	if (billValue
 		&& (percentageTipValue || customTipValue)
 		&& 	peopleValue) {
@@ -187,15 +180,12 @@ function updateTipAndTotal() {
 			if (customTipValue) {
 				tip = customTipValue
 			}
-
 			
-			let totalPerPerson = formatMoney(billValue + tip / peopleValue)
-			let tipPerPerson = formatMoney(tip / peopleValue)
-			console.log("total : " + (billValue + tip))
-			console.log("tip : " + (tip))
-			console.log("total per person: " + totalPerPerson)
-			console.log("tip per person: " + tipPerPerson)
-			showTipAndTotal(tipPerPerson, totalPerPerson)
+			let totalPerPerson = (billValue + tip) / peopleValue
+			let totalPerPersonString = String(totalPerPerson)
+			let tipPerPerson = tip / peopleValue
+			let tipPerPersonString = String(tipPerPerson)
+			showTipAndTotal(formatMoneyString(tipPerPersonString), formatMoneyString(totalPerPersonString))
 	} else {
 		resetTipAndTotal()
 	}
