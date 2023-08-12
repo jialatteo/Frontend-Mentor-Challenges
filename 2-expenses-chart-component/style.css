@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap');
+
+:root {
+	--soft-red: hsl(10, 79%, 65%);
+	--hover-red: hsl(10, 100%, 80%);
+	--cyan: hsl(186, 34%, 60%);
+	--hover-cyan: hsl(186, 64%, 74%);
+	--dark-brown-percentage: hsl(25, 47%, 15%);
+	--medium-brown-text: hsl(28, 10%, 53%);
+	--cream-bg: hsl(27, 66%, 92%);
+	--very-pale-orange: hsl(33, 100%, 98%);
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+	background-color: var(--cream-bg);
+	font-size: 18px;
+	font-family: 'DM Sans', sans-serif;
+}
+
+.main-container {
+	margin: 80px 10px;
+	min-width: 600px;
+}
+
+.balance {
+	background-color: var(--soft-red);
+	border-radius: 20px;	
+	padding: 30px;
+	display: grid;
+	grid-template-areas: "balanceText balanceImage"
+						 "balanceValue balanceImage";
+	color: white;
+}
+
+.balance h2 {
+	grid-area: balanceText;
+	font-weight: 400;
+	font-size: 18px;
+	margin-bottom: 6px;
+}
+
+.balance p {
+	grid-area: balanceValue;
+	font-size: 32px;
+	font-weight: 700;
+}
+
+.balance img {
+	grid-area: balanceImage;
+	place-self: center end;
+}
+
+hr {
+	margin: 40px 0;
+}
+
+.spending {
+	margin-top: 20px;
+	background-color: white;
+	border-radius: 20px;
+	padding: 30px;
+}
+
+.spending > h2 {
+	font-size: 34px;
+	margin-bottom: 60px;
+}
+
+.expenses {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 20px;
+	text-align: center;
+}
+
+
+
+.hover-red:hover {
+	background-color: var(--hover-red);
+}
+
+.hover-blue:hover {
+	background-color: var(--hover-cyan);
+}
+
+.tooltip {
+	place-self: center;
+	position: absolute;
+	color: white;
+	font-weight: 700;
+	background-color: black;
+	padding: 8px;
+	border-radius: 6px;
+	top: -50px;
+}
+
+.day {
+	margin-top: 4px;
+	color: var(--medium-brown-text);
+	min-width: 38px;
+}
+
+.chart {
+	height: 200px;	
+	background-color: var(--soft-red);
+	border-radius: 4px;
+	position: relative;
+	display: grid;
+}
+
+.monthly-total h2 {
+	color: var(--medium-brown-text);
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.total {
+	display: grid;
+	grid-template-areas: "totalValue totalPercentage"
+						 "totalValue totalText";
+}
+
+.total .total-value{
+	grid-area: totalValue;	
+	place-self: center start;
+	font-size: 50px;
+	font-weight: 700;
+}
+
+.total .total-percentage {
+	grid-area: totalPercentage;
+	place-self: end end;
+	color: var(--dark-brown-percentage);
+	font-weight: 700;
+}
+
+.total .total-text {
+	grid-area: totalText;
+	place-self: start end;
+	color: var(--medium-brown-text);
+}
+
+@media (max-width:620px) {
+	.main-container {
+		min-width: calc(100vw - 20px);
+	}
+}
+
+@media (max-width: 470px) {
+	.expenses p {
+		font-size: 12px;
+		min-width: 25px;
+	}	
+
+	.spending > h2 {
+	    font-size: 28px;
+	    margin-bottom: 40px;
+	}
+
+	.monthly-total h2 {
+	    color: var(--medium-brown-text);
+	    font-size: 16px;
+	    font-weight: 400;
+	}
+
+	.total .total-value {
+		font-size: 34px;
+	}
+
+	.total .total-percentage {
+		font-size: 14px;
+	}
+
+	.total .total-text {
+		font-size: 14px;
+	}
+
+	.balance, .spending {
+		padding: 20px;
+	}
+
+	hr {
+		margin: 20px 0;
+	}
+}
+
+@media (max-width: 390px) {
+	.spending > h2 {
+	    font-size: 28px;
+	}
+
+	.main-container {
+		min-width: 350px;
+	}
+}
