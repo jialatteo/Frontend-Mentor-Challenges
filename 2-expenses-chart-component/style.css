@@ -80,16 +80,7 @@ hr {
 	grid-template-columns: repeat(7, 1fr);
 	gap: 20px;
 	text-align: center;
-}
-
-
-
-.hover-red:hover {
-	background-color: var(--hover-red);
-}
-
-.hover-blue:hover {
-	background-color: var(--hover-cyan);
+	align-items: end;
 }
 
 .tooltip {
@@ -101,6 +92,11 @@ hr {
 	padding: 8px;
 	border-radius: 6px;
 	top: -50px;
+	display: none;
+}
+
+.tooltip::before {
+	content: "$";
 }
 
 .day {
@@ -115,6 +111,23 @@ hr {
 	border-radius: 4px;
 	position: relative;
 	display: grid;
+	cursor: pointer;
+}
+
+.chart:hover {
+	background-color: var(--hover-red);
+}
+
+.chart:hover .tooltip {
+	display: block;
+}
+
+.max-chart {
+	background-color: var(--cyan);
+}
+
+.max-chart:hover {
+	background-color: var(--hover-cyan);
 }
 
 .monthly-total h2 {
