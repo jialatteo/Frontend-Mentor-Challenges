@@ -41,4 +41,8 @@ function toggleFeaturesDropdown(e) {
 
 mobileFeatures.addEventListener("click", toggleFeaturesDropdown)
 mobileCompany.addEventListener("click", toggleCompanyDropdown)
-
+window.addEventListener("resize", () => {
+	if (window.innerWidth > 770) {
+		mobileMenu.style.display = "none"
+	} 
+})
