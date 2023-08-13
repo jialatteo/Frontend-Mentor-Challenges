@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap');
+
+:root {
+	--almost-white: hsl(0, 0%, 98%);
+	--medium-gray: hsl(0, 0%, 41%);
+	--almost-black: hsl(0, 0%, 8%);
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-size: 18px;
+	font-family: 'Epilogue', sans-serif;
+	display: grid;
+	justify-content: center;
+}
+
+.main-container {
+	max-width: 1440px;
+}
+
+.header {
+	display: flex;
+	width: 100%;
+	padding: 20px 30px;
+	align-items: center;
+}
+
+.header-interactive {
+	display: flex;
+	width: 100%;
+	margin-left: 60px;
+	gap: 50px;
+}
+
+.header-interactive div {
+	display: flex;
+	align-items: center;
+}
+
+.dropdown-icon {
+	margin-left: 8px;
+}
+
+.header-interactive .login {
+	margin-left: auto;
+}
+
+.register {
+	border: 1px solid black;
+	padding: 10px 20px;
+	border-radius: 12px;
+}
+
+.content {
+	display: grid;
+	padding: 30px 80px;
+	grid-template-areas: "learnMore heroImage"
+						 "clients   heroImage";
+	grid-template-columns: 5fr 4fr;
+	grid-template-rows: 7fr 2fr;
+	place-content: center;
+}
+
+.learn-more {
+	grid-area: learnMore;
+	place-self: end start;
+	max-width: 530px;
+}
+
+.learn-more h2 {
+	font-size: 80px;
+	margin-bottom: 50px;
+}
+
+.learn-more p {
+	color: var(--medium-gray);	
+	line-height: 1.5;
+	margin-bottom: 50px;
+	margin-right: 50px;
+}
+
+.learn-more button {
+	border-radius: 12px;
+	border: none;
+	background-color: black;
+	color: white;
+	height: 54px;
+	padding: 0 30px;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.hero-image {
+	grid-area: heroImage;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.clients {
+	grid-area: clients;
+	place-self: end start;
+	display: grid;
+	place-items: center;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+@media (max-width: 930px) {
+	.clients {
+		gap: unset;
+	}
+
+	.clients img {
+		transform: scale(0.8);
+	}
+}
