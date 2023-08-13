@@ -17,14 +17,21 @@ body {
 	font-family: 'Epilogue', sans-serif;
 	display: grid;
 	justify-content: center;
+	background-color: var(--almost-white);
+	color: var(--medium-gray);
 }
 
 .main-container {
 	max-width: 1440px;
 }
 
+.mobile-menu {
+	display: none;
+}
+
 .header {
 	display: flex;
+	position: relative;
 	width: 100%;
 	padding: 20px 30px;
 	align-items: center;
@@ -46,12 +53,86 @@ body {
 	margin-left: 8px;
 }
 
+.features, .company {
+	position: relative;
+}
+
+.empty-hover {
+	position: absolute;
+	top: 0;
+	height: 40px;
+	width: 100%;
+}
+
+.company .dropdown {
+	visibility: hidden ;
+	border: none;
+	width: 130px;
+	border-radius: 10px;
+	bottom: -153px;
+	left: 0px;
+	display: grid;
+	gap: 20px;
+	padding: 20px;
+	position: absolute;
+	background-color: white;
+	align-items: center;
+	box-shadow: 0px 0px 6px grey;
+}
+
+.company:hover .dropdown {
+	visibility: visible;
+}
+
+.features .dropdown {
+	visibility: hidden;
+	border: none;
+	border-radius: 10px;
+	bottom: -190px;
+	right: 0px;
+	display: grid;
+	gap: 20px;
+	padding: 20px;
+	position: absolute;
+	background-color: white;
+	align-items: center;
+	box-shadow: 0px 0px 6px grey;
+}
+
+.features:hover .dropdown {
+	visibility: visible;
+}
+
+.header-button {
+	cursor: pointer;
+}
+
+.header-button p:hover {
+	color: black;
+	border-color: black;
+}
+
+.item > img {
+	margin-right: 14px;
+}
+
+.login-and-register {
+	display: flex;
+	gap: 50px;
+	margin-left: auto;
+	align-items: center;
+}
+
+.sidebar {
+	display: none;
+}
+
 .header-interactive .login {
 	margin-left: auto;
 }
 
 .register {
-	border: 1px solid black;
+	border: 1px solid var(--medium-gray);
 	padding: 10px 20px;
 	border-radius: 12px;
 }
@@ -75,6 +156,7 @@ body {
 .learn-more h2 {
 	font-size: 80px;
 	margin-bottom: 50px;
+	color: black;
 }
 
 .learn-more p {
@@ -86,13 +168,19 @@ body {
 
 .learn-more button {
 	border-radius: 12px;
-	border: none;
+	border: 1px solid black;
 	background-color: black;
 	color: white;
 	height: 54px;
 	padding: 0 30px;
 	font-size: 18px;
 	font-weight: 700;
+	cursor: pointer;
+}
+
+.learn-more button:hover{
+	background-color: transparent;
+	color: black;
 }
 
 .hero-image {
@@ -108,15 +196,76 @@ body {
 	display: grid;
 	place-items: center;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 20px;
+	gap: 10px;
 }
 
-@media (max-width: 930px) {
-	.clients {
-		gap: unset;
+@media (max-width: 1110px) {
+	.learn-more h2 {
+		font-size: 64px;
+		margin-right: 0px;
 	}
 
+	.header-interactive {
+		margin-left: 30px;
+		gap: 20px;
+	}
+
+	.login-and-register {
+		gap: 20px;
+	}
+
+	.clients {
+		gap: 0px;
+	}
 	.clients img {
-		transform: scale(0.8);
+		transform: scale(0.75);
+	}
+}
+
+@media (max-width: 770px) {
+	.hero-image {
+		content: url(images/image-hero-mobile.png);
+		width: 100%;
+	}
+
+	.header-interactive {
+		display: none;
+	}
+	
+	.sidebar {
+		position: absolute;
+		display: block;
+		right: 20px;
+	}
+
+	.login-and-register {
+		display: none;
+	}
+
+	.content {
+		grid-template-columns: unset;
+		grid-template-rows: unset;
+		grid-template-areas: "heroImage"
+							 "learnMore"
+							 "clients";
+		padding: 0px 0px;
+		place-items: center;
+	}
+
+	.learn-more {
+		place-self: unset;
+		text-align: center;
+	}
+
+	.learn-more h2 {
+		margin: unset;
+	}
+
+	.learn-more p{
+		margin: unset;
+	}
+
+	.clients {
+		place-self: unset;
 	}
 }
